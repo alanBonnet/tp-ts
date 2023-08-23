@@ -1,5 +1,5 @@
 import { SetNumerosF, SetOperacionesF } from "../../../types/inputs.types";
-import { CalculadoraProps as CalculadoraProps, Operaciones as Operaciones, OperacionesObject as OperacionesObject } from "../types/calculadora.types";
+import { OperacionesObject, Operaciones, CalculadoraProps } from "../types/calculadora.types";
 
 // Lista Operaciones 
 export const operacionesArray: Array<OperacionesObject> = [
@@ -65,22 +65,23 @@ class Calculadora {
         return this.numeros;
     }
     sumar(numeros:CalculadoraProps){
-        let resultado = (parseFloat(numeros.num1) + parseFloat(numeros.num2)).toString();
+        const resultado = (parseFloat(numeros.num1) + parseFloat(numeros.num2)).toString();
         return {...numeros, resultado};
     }
     restar(numeros:CalculadoraProps){
-        let resultado = (parseFloat(numeros.num1) - parseFloat(numeros.num2)).toString();
+        const resultado = (parseFloat(numeros.num1) - parseFloat(numeros.num2)).toString();
         return ({ ...numeros, resultado })
     }
     multiplicar(numeros: CalculadoraProps){
-        let resultado = (parseFloat(numeros.num1) * parseFloat(numeros.num2)).toString();
+        const resultado = (parseFloat(numeros.num1) * parseFloat(numeros.num2)).toString();
             return ({ ...numeros, resultado })
     }
     dividir(numeros: CalculadoraProps){
-        let resultado = (parseFloat(numeros.num1) / parseFloat(numeros.num2)).toString();
+        const resultado = (parseFloat(numeros.num1) / parseFloat(numeros.num2)).toString();
             return ({ ...numeros, resultado })
     }
 }
+
 
 export const Calcular = (numeros: CalculadoraProps): CalculadoraProps => {
     const calcu = new Calculadora(numeros)
@@ -94,6 +95,6 @@ export const Calcular = (numeros: CalculadoraProps): CalculadoraProps => {
         case (Operaciones.DIVISION):
             return calcu.dividir(numeros);
         default:
-            return ({...numeros})
+            return calcu.getNumeros()
     }
 }

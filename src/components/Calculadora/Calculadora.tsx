@@ -12,7 +12,7 @@ import {
     setNumerosCalc,
     setOperacionCalc,
     stateCalcBase,
-} from "./services/calculadora.service";
+} from "./helpers/calculadora.diccionario";
 
 export const Calculadora = () => {
     const [numerosCalc, setNumerosCal] =
